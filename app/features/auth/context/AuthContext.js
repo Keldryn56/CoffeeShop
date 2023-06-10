@@ -4,12 +4,26 @@ export const AuthContext = createContext(null)
 
 export const AuthProvider = ({children}) => {
 
-    const [loading, setLoading] = useState(false)
+    const [sending, setSending] = useState(false)
     const [user, setUser] = useState(null)
 
-    const signIn = (username, email, password) => {
-        setLoading(true)
+    const signIn = (email, password) => {
+        setSending(true)
+        try{
+            setUser({
+                username: 'lull',
+                email,
+                password
+            })
+        }catch(e){
+            console.log('error occured') 
+        }finally{
+            setSending(false)
+        } 
+    }
 
+    const signUp = (username, email, password) => {
+        setSending(true)
         try{
             setUser({
                 username,
@@ -17,15 +31,16 @@ export const AuthProvider = ({children}) => {
                 password
             })
         }catch(e){
-            console.log('error occured')
-        }
-        setLoading(false)
+            console.log('error occured') 
+        }finally{
+            setSending(false)
+        } 
     }
 
     const logOut = () => setUser(null) 
 
     return (
-        <AuthContext.Provider value={{user, signIn, loading, logOut}}>
+        <AuthContext.Provider value={{user, signIn, sending, logOut}}>
             {children}
         </AuthContext.Provider>
     )
