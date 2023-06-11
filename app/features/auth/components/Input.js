@@ -22,7 +22,7 @@ export default Input = ({name, control, rules, errors = null, secure = false, ..
                 }
             </View>
             {errors &&
-                <Text className="ml-[15] mt-[8] text-red-300">{errors.message}</Text>
+                <Text className="mt-[8] text-red-300">{errors.message}</Text>
             }
         </View>
     )

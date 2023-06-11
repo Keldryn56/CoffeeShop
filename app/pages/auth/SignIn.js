@@ -15,9 +15,9 @@ export default SignIn = ({navigation}) => {
             <Logo />
             <Input autoCapitalize="none" placeholder="Email" errors={errors.email} control={control} rules={emailField} name="email" />
             <Input placeholder="Mot de passe" errors={errors.password} secure={true} control={control} rules={passwordField} name="password" />
-            <Btn name="Connexion" onSubmit={handleSubmit(onSubmit)} sending={sending} />
+            <Btn uppercase={true} name="Connexion" onSubmit={handleSubmit(onSubmit)} sending={sending} />
             <TouchableOpacity onPress={() => navigation.navigate('signup')}>
-                <Text className="text-center text-second text-sm">Pas de compte? <Text className="underline">Inscrivez vous</Text></Text>
+                <Text className="text-center text-second text-sm">Pas de compte? <Text className="underline font-bold">Inscrivez vous</Text></Text>
             </TouchableOpacity>
         </View>
     )

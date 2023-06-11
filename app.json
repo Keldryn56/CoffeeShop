@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.keldryn56.CoffeeShop"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f2e83620-2fdd-408b-84ad-803bb6e46fcd"
+      }
+    },
+    "owner": "keldryn56"
   }
 }
