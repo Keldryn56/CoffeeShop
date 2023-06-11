@@ -1,7 +1,7 @@
 module.exports = {
-    prim: "#472f23",
-    acc: "#533828",
-    accv: "#5d3f2c",
-    second: "#c08c59"
+    prim: "#662613",
+    bgd: "#ebe0cb",
+    card: "#e6dac3",
+    second: "#edc28e"
 }
   

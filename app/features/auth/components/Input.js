@@ -15,7 +15,7 @@ export default Input = ({name, control, rules, errors = null, secure = false, ..
     
     return(
         <View>
-            <View className="bg-second rounded flex-row">
+            <View className="bg-card rounded flex-row">
                 <TextInput className="text-acc2 py-inpY px-inpX grow" secureTextEntry={!visible} {...props} value={field.value} onChangeText={field.onChange} /> 
                 {secure &&
                     <Eye />

@@ -7,7 +7,7 @@ import { emailField, mandatoryField, passwordField } from "../../utils/formRules
 export default SignUp = ({navigation}) => {
 
     const {control, handleSubmit, watch, formState: { errors }} = useForm({mode: "onSubmit", reValidateMode: "onSubmit"})
-    const {signup} = useAuthContext()
+    const {signup, sending} = useAuthContext()
     const onSubmit = (data) => signup(data.username, data.email, data.password)
     
     return(
@@ -20,7 +20,7 @@ export default SignUp = ({navigation}) => {
                 ...passwordField, 
                 validate: (val) => val == watch('password') || 'Les mots de passe ne correspondent pas'
             }} name="passwordConfirm" />
-            <Btn name="Envoyer" onSubmit={handleSubmit(onSubmit)} />
+            <Btn name="Inscription" onSubmit={handleSubmit(onSubmit)} sending={sending} />
             <TouchableOpacity onPress={() => navigation.navigate('signin')}>
                 <Text className="text-center text-sm text-second">Déjà un compte? <Text className="underline">Connectez vous</Text></Text>
             </TouchableOpacity>
