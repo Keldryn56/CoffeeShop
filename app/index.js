@@ -6,7 +6,7 @@ import Home from './pages/home/Home'
 export default MainApp = () => {
     const {user} = useAuthContext()
     return (
-        <SafeAreaView className="flex-1">
+        <SafeAreaView className="flex-1 bg-prim">
             {
                 user ? <Home /> : <AuthNavigator /> 
             }
