@@ -3,7 +3,6 @@ import { Text, TextInput, View } from 'react-native'
 import useVisible from '../hooks/useVisible'
 
 export default Input = ({name, control, rules, errors = null, secure = false, ...props}) => {
-    console.log('render input UWU')
     const {field} = useController({
         control,
         defaultValue: '',
@@ -11,8 +10,8 @@ export default Input = ({name, control, rules, errors = null, secure = false, ..
         rules,
         errors
     })
-
-    const {visible, Eye} = useVisible(secure)  
+    
+    const {visible, Eye} = secure ? useVisible(secure)  : {visible: true, Eye: null}
     
     return(
         <View>

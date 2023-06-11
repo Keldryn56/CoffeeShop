@@ -8,7 +8,7 @@ export default useVisible = (props) => {
     const handleVisible = () => setVisible(prev => !prev)
 
     const Eye = () => (
-        <TouchableOpacity className="mr-[10] self-center" onPress={handleVisible}>
+        <TouchableOpacity hitSlop={15} className="mr-[10] self-center" onPress={handleVisible}>
             <Icon name={visible ? 'eye' : 'eye-slash'} size={20} color={colors.accv} />
         </TouchableOpacity>
     )
