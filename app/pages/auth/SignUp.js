@@ -7,8 +7,8 @@ import { emailField, mandatoryField, passwordField } from "../../utils/formRules
 export default SignUp = ({navigation}) => {
 
     const {control, handleSubmit, watch, formState: { errors }} = useForm({mode: "onSubmit", reValidateMode: "onSubmit"})
-    const {signup, sending} = useAuthContext()
-    const onSubmit = (data) => signup(data.username, data.email, data.password)
+    const {signUp, sending} = useAuthContext()
+    const onSubmit = (data) => signUp(data.username, data.email, data.password)
     
     return(
         <View style={{rowGap: 30}} className="flex-1 justify-center p-[20] bg-prim">

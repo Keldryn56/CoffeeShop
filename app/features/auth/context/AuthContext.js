@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import auth from '@react-native-firebase/auth';
 
 export const AuthContext = createContext(null)
 
@@ -7,40 +8,43 @@ export const AuthProvider = ({children}) => {
     const [sending, setSending] = useState(false)
     const [user, setUser] = useState(null)
 
-    const signIn = (email, password) => {
-        setSending(true)
-        try{
-            setUser({
-                username: 'lull',
-                email,
-                password
-            })
-        }catch(e){
-            console.log('error occured') 
-        }finally{
-            setSending(false)
-        } 
+    const onAuthStateChanged = (user) => {
+        setUser(user);
     }
 
-    const signUp = (username, email, password) => {
+    const signIn = async(email, password) => {
         setSending(true)
         try{
-            setUser({
-                username,
-                email,
-                password
-            })
+            await auth().signInWithEmailAndPassword(email, password)
         }catch(e){
-            console.log('error occured') 
-        }finally{
-            setSending(false)
-        } 
+            alert(e.message) 
+        }
+        setSending(false) 
     }
 
-    const logOut = () => setUser(null) 
+    const signUp = async(username, email, password) => {
+        setSending(true) 
+        try{
+            await auth().createUserWithEmailAndPassword(email, password)
+            await auth().currentUser.updateProfile({
+                displayName: username
+            })
+            await auth().currentUser.getIdToken(true) 
+        }catch(e){
+            alert(e.message) 
+        }
+        setSending(false)
+    }
+
+    const logOut = () => auth().signOut()
+
+    useEffect(() => { 
+        const subscriber = auth().onIdTokenChanged(onAuthStateChanged)
+        return subscriber
+    }, [])
 
     return (
-        <AuthContext.Provider value={{user, signIn, sending, logOut}}>
+        <AuthContext.Provider value={{user, signIn, sending, logOut, signUp}}>
             {children}
         </AuthContext.Provider>
     )

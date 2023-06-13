@@ -1,14 +1,14 @@
-import { useAuthContext } from './features/auth/hooks/useAuthContext'
-import AuthNavigator from './pages/auth/AuthNavigator'
 import { SafeAreaView } from 'react-native'
-import Home from './pages/home/Home'
+import { useAuthContext } from './features/auth/hooks/useAuthContext'
+import AuthNavigator from './navigation/AuthNavigator'
+import AppTabNavigator from './navigation/AppTabNavigator'
 
 export default MainApp = () => {
     const {user} = useAuthContext()
     return (
         <SafeAreaView className="flex-1 bg-prim">
             {
-                user ? <Home /> : <AuthNavigator /> 
+                user?.displayName ? <AppTabNavigator /> : <AuthNavigator />  
             }
         </SafeAreaView>
     )
