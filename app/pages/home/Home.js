@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import { useAuthContext } from '../../features/auth/hooks/useAuthContext'
+import ProductList from '../../features/products/ProductList'
 
 export default Home = () => {
 
@@ -7,10 +8,8 @@ export default Home = () => {
 
     return (
         <View className="flex-1 p-[20]">
-            <Text>You are logged in {user.displayName}</Text>
-            <TouchableOpacity onPress={() => logOut()}>
-                <Text>Log out</Text>
-            </TouchableOpacity>
+            <ProductList title="Populaires"/>  
+            <ProductList type="Iced" title="Froids"/>  
         </View>
     )
 }
