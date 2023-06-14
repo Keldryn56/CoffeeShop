@@ -1,8 +1,8 @@
 import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from 'react-native';
-import useFetch from '../../hooks/useFetch';
+import useFetch from '../../../hooks/useFetch';
 import ProductItem from './ProductItem';
 
-export default ProductList = (props) => {
+export default Popular = (props) => {
     const {type, title} = props
     const url = 'http://paul-virtual-machine:3000/products'
     let filteredItems = [] 
@@ -17,7 +17,7 @@ export default ProductList = (props) => {
     
     return (
         <View>
-            <Text className="text-xl font-black">{title}:</Text>
+            <Text className="text-3xl font-bold tracking-wider mb-[20]">{title}:</Text>
             {loading ? (
                 <ActivityIndicator className="flex-1 justify-center" />
             )
@@ -28,8 +28,9 @@ export default ProductList = (props) => {
                 <FlatList 
                     keyExtractor={(item) => item.id} 
                     data={filteredItems} 
+                    showsHorizontalScrollIndicator={false}
                     horizontal 
-                    style={{marginHorizontal: -20, padding: 20}}
+                    style={{marginHorizontal: -20, paddingHorizontal: 20}}
                     renderItem={({item, index}) => (
                         <TouchableOpacity>
                             <ProductItem item={item} />
